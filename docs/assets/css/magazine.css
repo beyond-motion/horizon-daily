@@ -37,28 +37,7 @@
   --gutter:       24px;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --paper:        #161616;
-    --paper-alt:    #1c1c1c;
-    --surface:      #1e1e1e;
-    --border:       #333333;
-    --border-light: #2a2a2a;
-
-    --ink:          #e8e6e1;
-    --ink-secondary:#b0aaa0;
-    --ink-muted:    #6a6560;
-
-    --accent:       #e8704a;
-    --accent-light: #f08866;
-    --accent-bg:    #2a1a15;
-
-    --score-high:   #e8704a;
-    --score-good:   #e8a83e;
-    --score-mid:    #8a8580;
-    --score-low:    #6a6560;
-  }
-}
+/* Magazine style is always warm-paper light. No dark mode. */
 
 /* --- Reset & Base --- */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
