@@ -10,10 +10,13 @@ title: Home
 
 <ul class="article-list">
   {% for post in site.posts limit:20 %}
+    {% assign raw_count = post.content | split: "item-tech-news" | size | minus: 1 %}
+    {% assign item_count = raw_count | divided_by: 2 %}
+    {% assign clean_title = post.title | remove: "Horizon Summary: " | remove: "(ZH)" | remove: "(EN)" | strip %}
     <li>
       <a class="article-card" href="{{ post.url | relative_url }}">
-        <div class="article-card-meta">{{ post.date | date: "%Y年%m月%d日" }}</div>
-        <div class="article-card-title">{{ post.title }}</div>
+        <div class="article-card-meta">{{ post.date | date: "%Y年%m月%d日" }} · {{ item_count }} 条精选</div>
+        <div class="article-card-title">{{ clean_title }} AI 日报</div>
       </a>
     </li>
   {% else %}
