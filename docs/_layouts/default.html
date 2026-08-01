@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ page.lang | default: site.lang | default: 'zh' }}" data-theme="light">
+<html lang="{{ page.lang | default: site.lang | default: 'zh' }}">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -9,7 +9,6 @@
   <link rel="alternate" type="application/rss+xml" title="Horizon Daily RSS (ZH)" href="{{ '/feed-zh.xml' | relative_url }}">
   <link rel="alternate" type="application/rss+xml" title="Horizon Daily RSS (EN)" href="{{ '/feed-en.xml' | relative_url }}">
 
-  <!-- Fonts: serif for editorial body, mono for meta -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700;900&family=Noto+Sans+SC:wght@400;500;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -18,18 +17,23 @@
 </head>
 <body>
 
-<header class="site-header">
-  <div class="header-inner">
-    <a href="{{ '/' | relative_url }}" class="logo">
-      <span class="logo-icon">🌅</span>
-      <span class="logo-text">Horizon Daily</span>
-    </a>
-    <nav class="header-nav">
-      <a href="{{ '/' | relative_url }}">日报</a>
-      <a href="{{ '/feed-zh.xml' | relative_url }}">RSS</a>
-    </nav>
-  </div>
+<div class="masthead-bar"></div>
+
+<header class="masthead">
+  <a href="{{ '/' | relative_url }}" class="masthead-logo">
+    <span>🌅</span>
+    <span>Horizon Daily</span>
+  </a>
+  <div class="masthead-date">AI Information Radar</div>
 </header>
+
+<nav class="masthead-nav">
+  <ul>
+    <li><a href="{{ '/' | relative_url }}">日报</a></li>
+    <li><a href="{{ '/feed-zh.xml' | relative_url }}">RSS</a></li>
+    <li><a href="https://github.com/Thysrael/Horizon">关于</a></li>
+  </ul>
+</nav>
 
 <main class="main-content">
   {{ content }}
@@ -37,7 +41,8 @@
 
 <footer class="site-footer">
   <div class="footer-inner">
-    <p>Powered by <a href="https://github.com/Thysrael/Horizon">Horizon</a> · AI 信息雷达 · 由 <a href="https://github.com/beyond-motion">beyond-motion</a> 部署</p>
+    <p>Powered by <a href="https://github.com/Thysrealm/Horizon">Horizon</a></p>
+    <p>© 2026</p>
   </div>
 </footer>
 
