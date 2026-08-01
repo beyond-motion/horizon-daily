@@ -22,17 +22,29 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.3'
+          working-directory: docs
+
       - name: Setup Pages
+        id: pages
         uses: actions/configure-pages@v4
 
       - name: Build with Jekyll
-        uses: actions/jekyll-build@v1
+        uses: action-jekyll-build@v0
         with:
-          source: ./docs
-          destination: ./_site
+          source: docs
+          destination: _site
+          key: ${{ secrets.JEKYLL_PAGES_API_KEY }}
+          enable_https: true
+          remote_url: ${{ steps.pages.outputs.origin }}
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
 
   deploy:
     needs: build
