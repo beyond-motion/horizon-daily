@@ -1,0 +1,35 @@
+{
+  "summary_file": "/Users/wanglingwei/Horizon/docs/_posts/2026-08-01-summary-zh.md",
+  "total_items": 4,
+  "items": [
+    {
+      "title": "电梯调度算法解析",
+      "url": "https://john.fun/elevators",
+      "score": 8.0,
+      "tags": "`#elevator-algorithms`, `#scheduling`, `#simulation`, `#software-engineering`, `#computer-systems`",
+      "summary": "本文在 john.fun 上由 Jrh0203 发布，深入分析电梯调度算法及其效率，并通过模拟比较不同策略，为调度算法设计提供参考。社区讨论将电梯调度与磁盘调度联系起来，指出 SCAN 算法本身也是磁盘调度算法。随后讨论补充了目的地派梯（Destination Dispatch）在实际办公建筑中的使用模式、高层住宅电梯饱和等现实限制，并推荐 Elevator Saga 交互式模拟游戏。整体属于面向软件工程和计算机系统的技术分析，而非具有突破性的研究。"
+    },
+    {
+      "title": "qm：面向工作的开源多智能体协作框架",
+      "url": "https://github.com/yc-software/qm",
+      "score": 8.0,
+      "tags": "`#multi-agent systems`, `#AI agents`, `#open source`, `#developer tools`, `#collaboration`",
+      "summary": "YC Software 开源了 qm，一个面向工作的“多人/多智能体”协作 harness，其核心设计是给每个参与者独立的 scope，并通过共享房间让多个 AI 代理和人类协同完成任务。项目还内置一个“反模板化”的前端品味技能，用于避免生成千篇一律的界面。该项目在 Hacker News 上获得 581 分和 119 条评论，反映出开发者对多智能体协作中作用域隔离与协调问题的强烈兴趣。目前源内容不完整，更多实现细节需查看 GitHub 仓库确认。"
+    },
+    {
+      "title": "DeepSeek-V4-Flash-0731：高性价比 304B 智能模型",
+      "url": "https://simonwillison.net/2026/Jul/31/deepseek-v4-flash-0731/#atom-everything",
+      "score": 8.0,
+      "tags": "`#deepseek`, `#LLM`, `#model release`, `#cost efficiency`, `#agentic capabilities`",
+      "summary": "DeepSeek 发布了 V4 系列新模型 DeepSeek-V4-Flash-0731，规模为 3040 亿参数（Hugging Face 上约 167GB），官方称其“智能体能力显著增强”。Artificial Analysis 将其智能表现排名高于 4280 亿参数的 MiniMax M3，且定价为每百万输入 token 0.14 美元、每百万输出 token 0.27 美元，可能是目前性价比最高的模型之一。Simon Willison 实测发现，默认推理级别生成的图像质量不佳，但将推理级别调高后效果明显改善。该模型在单位智能成本方面表现突出，适合对成本敏感的智能体工作负载。"
+    },
+    {
+      "title": "无状态 MCP 2.0 发布，Simon Willison 推出两个新项目",
+      "url": "https://simonwillison.net/2026/Jul/31/stateless-mcp/#atom-everything",
+      "score": 8.0,
+      "tags": "`#MCP`, `#AI agents`, `#protocol`, `#software engineering`, `#Simon Willison`",
+      "summary": "Model Context Protocol 于 2026-07-28 发布 2.0 规范（又称无状态 MCP），这是该协议自推出以来最重大的变更。新规范将原先需要两步 HTTP 请求（先初始化会话获取 Mcp-Session-Id，再调用工具）简化为一次带 MCP-Protocol-Version、Mcp-Method 等头部的请求，降低了客户端与服务端实现复杂度，也更适合可扩展的 Web 应用。Simon Willison 因此重新燃起对 MCP 的兴趣，并发布了两个项目：Python CLI 工具 mcp-explorer，可用 uvx 直接运行以列出、检查、调用 MCP 工具；以及 Datasette 插件 datasette-mcp，为 Datasette 实例增加 /-/mcp 端点，提供 list\\_databases、get\\_database\\_schema、execute\\_sql 三个工具（execute\\_sql 目前只读）。他已在 datasette.simonwillison.net/-/mcp 运行该插件，并记录了接入 ChatGPT 和 Claude 的"
+    }
+  ],
+  "timestamp": "2026-08-01T19:27:03.225208"
+}
