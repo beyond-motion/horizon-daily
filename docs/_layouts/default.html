@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>{% if page.title %}{{ page.title }} — {% endif %}{{ site.title }}</title>
+<title>{% if page.title %}{{ page.title }} — {% endif %}HORIZON</title>
 
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌅</text></svg>">
 <link rel="alternate" type="application/rss+xml" title="Horizon Daily RSS (ZH)" href="{{ '/feed-zh.xml' | relative_url }}">
@@ -32,12 +32,39 @@
   </div>
 </div>
 
-<!-- Nav -->
+<!-- Language Switcher for post pages -->
+{% assign current_date = page.date | date: "%Y-%m-%d" %}
+{% assign has_siblings = false %}
+{% for p in site.posts %}
+  {% assign pd = p.date | date: "%Y-%m-%d" %}
+  {% if pd == current_date and p.url != page.url %}
+    {% assign has_siblings = true %}
+  {% endif %}
+{% endfor %}
+{% if has_siblings %}
 <div class="nav-bar">
-  <span><a href="{{ '/' | relative_url }}">首页</a></span>
-  <span><a href="https://github.com/Thysrael/Horizon">关于 Horizon</a></span>
-  <span><a href="https://github.com/beyond-motion/horizon-daily">GitHub</a></span>
+  <span><a href="{{ '/' | relative_url }}">← 返回首页</a></span>
+  <span>
+    {% for p in site.posts %}
+      {% assign pd = p.date | date: "%Y-%m-%d" %}
+      {% if pd == current_date %}
+        {% if p.url == page.url %}
+          <strong style="color:var(--ink);">{{ p.lang | upcase }}</strong>
+        {% else %}
+          <a href="{{ p.url | relative_url }}">{{ p.lang | upcase }}</a>
+        {% endif %}
+      {% endif %}
+    {% endfor %}
+  </span>
+  <span><a href="{{ '/feed-zh.xml' | relative_url }}">RSS</a></span>
 </div>
+{% else %}
+<div class="nav-bar">
+  <span><a href="{{ '/' | relative_url }}">← 返回首页</a></span>
+  <span><a href="https://github.com/Thysrael/Horizon">关于 Horizon</a></span>
+  <span><a href="{{ '/feed-zh.xml' | relative_url }}">RSS</a></span>
+</div>
+{% endif %}
 
 <!-- Main Content -->
 <div class="main-content">
