@@ -3,7 +3,9 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches: [main]
-    paths: ['docs/**']
+    paths:
+      - 'docs/**'
+      - '.github/workflows/deploy-docs.yml'
   workflow_dispatch:
 
 permissions:
@@ -26,6 +28,7 @@ jobs:
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: '3.3'
+          bundler-cache: true
           working-directory: docs
 
       - name: Setup Pages
@@ -33,13 +36,11 @@ jobs:
         uses: actions/configure-pages@v4
 
       - name: Build with Jekyll
-        uses: action-jekyll-build@v0
-        with:
-          source: docs
-          destination: _site
-          key: ${{ secrets.JEKYLL_PAGES_API_KEY }}
-          enable_https: true
-          remote_url: ${{ steps.pages.outputs.origin }}
+        working-directory: docs
+        env:
+          JEKYLL_ENV: production
+        run: |
+          bundle exec jekyll build --baseurl "${{ steps.pages.outputs.base_path }}" -d ../_site
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
