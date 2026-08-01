@@ -3,27 +3,37 @@ layout: default
 title: Home
 ---
 
-<div class="home-hero">
-  <div class="home-kicker">AI Daily Brief</div>
-  <h1 class="home-headline">从喧嚣中筛出值得读的</h1>
-  <p class="home-subtitle">Horizon 信息雷达每日精选 — 全球科技前沿，人工评分筛选。</p>
+<!-- Lead -->
+<div class="lead">
+AI 信息雷达每日精选 — 从全球 RSS 源中自动筛选、评分、生成中英双语简报。从喧嚣中筛出值得读的。
 </div>
 
-<ul class="article-list">
-  {% for post in site.posts limit:20 %}
-    {% assign raw_count = post.content | split: "item-tech-news" | size | minus: 1 %}
-    {% assign item_count = raw_count | divided_by: 2 %}
-    {% assign clean_date = post.date | date: "%Y年%m月%d日" %}
-    <li>
-      <a class="article-card" href="{{ post.url | relative_url }}">
-        <div class="article-kicker">每日精选 · {{ item_count }} 条</div>
-        <div class="article-title">{{ clean_date }} AI 日报</div>
-        <div class="article-meta">{{ post.date | date: "%B %d, %Y" }}</div>
-      </a>
-    </li>
-  {% else %}
-    <li style="padding:48px 0;text-align:center;color:var(--gray-500);">
-      <em>暂无日报，请稍后再来</em>
-    </li>
-  {% endfor %}
-</ul>
+<!-- Article List -->
+{% for post in site.posts limit:20 %}
+<div class="article">
+  <div class="article-num">
+    {{ forloop.index | minus: 1 | times: 0 | plus: post.date | date: "%d" }}
+    <small>{{ post.date | date: "%b" }}</small>
+  </div>
+  <div class="article-body">
+    <h2><a href="{{ post.url | relative_url }}">{{ post.date | date: "%Y年%m月%d日" }} AI 日报</a></h2>
+    <div class="article-meta">
+      <span class="tag">{{ post.lang | default: "ZH" }}</span>
+      {{ post.date | date: "%B %d, %Y" }}
+    </div>
+    <p class="article-summary">
+      {% assign lines = post.content | split: "item-tech-news" %}
+      {% assign count = lines | size | minus: 1 | divided_by: 2 %}
+      {% if post.lang contains "zh" %}
+        中文版 · {{ count }} 条精选
+      {% else %}
+        English Edition · {{ count }} items
+      {% endif %}
+    </p>
+  </div>
+</div>
+{% else %}
+<div style="text-align:center;padding:60px 0;color:var(--brown-gray);">
+  <p style="font-style:italic;font-size:16px;">暂无日报，请稍后再来</p>
+</div>
+{% endfor %}
